@@ -1,4 +1,5 @@
 import React from 'react';
+import { personalInfo } from '../../../data/resume';
 import './Footer.css';
 
 interface SocialLink {
@@ -18,28 +19,28 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
   const socialLinks: SocialLink[] = [
     {
       name: 'GitHub',
-      url: 'https://github.com',
+      url: personalInfo.github,
       icon: '🔗',
       ariaLabel: 'Visit GitHub profile'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com',
+      url: personalInfo.linkedin,
       icon: '💼',
       ariaLabel: 'Visit LinkedIn profile'
     },
     {
       name: 'Email',
-      url: 'mailto:contact@example.com',
+      url: `mailto:${personalInfo.email}`,
       icon: '📧',
       ariaLabel: 'Send email'
     },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com',
-      icon: '🐦',
-      ariaLabel: 'Visit Twitter profile'
-    }
+    ...(personalInfo.website ? [{
+      name: 'Website',
+      url: personalInfo.website,
+      icon: '🌐',
+      ariaLabel: 'Visit website'
+    }] : [])
   ];
 
   const handleSocialClick = (url: string) => {
@@ -131,7 +132,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
       <div className="footer__bottom">
         <div className="footer__container">
           <p className="footer__copyright">
-            © {currentYear} Portfolio Website. Built with React & TypeScript.
+            © {currentYear} {personalInfo.name}. Built with React & TypeScript.
           </p>
           <p className="footer__attribution">
             Designed and developed with ❤️

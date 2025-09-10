@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { personalInfo } from '../../../data/resume';
 import './ResumeDownload.css';
 
 export const ResumeDownload: React.FC = () => {
@@ -14,7 +15,9 @@ export const ResumeDownload: React.FC = () => {
       // Create a link element and trigger download
       const link = document.createElement('a');
       link.href = '/resume.pdf'; // This should point to your actual resume PDF
-      link.download = 'resume.pdf';
+      // Create filename from actual name (remove spaces, add underscore)
+      const fileName = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
+      link.download = fileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

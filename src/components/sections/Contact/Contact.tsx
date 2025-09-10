@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ContactForm from './ContactForm';
 import SocialLinks, { type ContactInfo } from './SocialLinks';
 import { sendContactEmail, type EmailServiceResponse } from '../../../services/emailService';
+import { personalInfo } from '../../../data/resume';
 import type { ContactForm as ContactFormType } from '../../../types';
 import './Contact.css';
 
@@ -16,11 +17,11 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({ 
   className = '', 
   contactInfo = {
-    email: 'your.email@example.com',
-    phone: '+1 (555) 123-4567',
-    location: 'San Francisco, CA',
-    linkedin: 'https://linkedin.com/in/yourprofile',
-    github: 'https://github.com/yourusername',
+    email: personalInfo.email,
+    phone: personalInfo.phone,
+    location: personalInfo.location,
+    linkedin: personalInfo.linkedin,
+    github: personalInfo.github,
   }
 }) => {
   const [messageStatus, setMessageStatus] = useState<MessageStatus>('idle');
@@ -110,7 +111,7 @@ const Contact: React.FC<ContactProps> = ({
             <h3 className="contact-info-title">Let's Connect</h3>
             <p className="contact-info-description">
               Feel free to reach out through any of these channels. I'm always open to 
-              discussing new opportunities, collaborations, or just having a chat about technology.
+              discussing new opportunities, collaborations, or just having a chat.
             </p>
             
             <SocialLinks 

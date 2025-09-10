@@ -7,8 +7,8 @@ import { skills } from '../../../data/skills';
 // Mock the skills data for consistent testing
 vi.mock('../../../data/skills', () => ({
   skills: [
-    { name: 'React', category: 'frontend', proficiency: 5 },
-    { name: 'TypeScript', category: 'frontend', proficiency: 4 },
+    { name: 'Java', category: 'languages', proficiency: 5 },
+    { name: 'Python', category: 'languages', proficiency: 4 },
     { name: 'Node.js', category: 'backend', proficiency: 4 },
     { name: 'MongoDB', category: 'backend', proficiency: 3 },
     { name: 'Git', category: 'tools', proficiency: 5 },
@@ -35,7 +35,7 @@ describe('Skills Component', () => {
   it('displays all skill categories with correct titles', () => {
     render(<Skills />);
     
-    expect(screen.getByText('Frontend Development')).toBeInTheDocument();
+    expect(screen.getByText('Programming Languages')).toBeInTheDocument();
     expect(screen.getByText('Backend Development')).toBeInTheDocument();
     expect(screen.getByText('Tools & Technologies')).toBeInTheDocument();
     expect(screen.getByText('Other Skills')).toBeInTheDocument();
@@ -45,8 +45,8 @@ describe('Skills Component', () => {
     render(<Skills />);
     
     // Check that all skills are rendered
-    expect(screen.getByText('React')).toBeInTheDocument();
-    expect(screen.getByText('TypeScript')).toBeInTheDocument();
+    expect(screen.getByText('Java')).toBeInTheDocument();
+    expect(screen.getByText('Python')).toBeInTheDocument();
     expect(screen.getByText('Node.js')).toBeInTheDocument();
     expect(screen.getByText('MongoDB')).toBeInTheDocument();
     expect(screen.getByText('Git')).toBeInTheDocument();
@@ -55,8 +55,8 @@ describe('Skills Component', () => {
     expect(screen.getByText('REST APIs')).toBeInTheDocument();
     
     // Check proficiency levels (using getAllByText for multiple occurrences)
-    expect(screen.getAllByText('5/5')).toHaveLength(3); // React, Git, REST APIs
-    expect(screen.getAllByText('4/5')).toHaveLength(3); // TypeScript, Node.js, Agile/Scrum
+    expect(screen.getAllByText('5/5')).toHaveLength(3); // Java, Git, REST APIs
+    expect(screen.getAllByText('4/5')).toHaveLength(3); // Python, Node.js, Agile/Scrum
     expect(screen.getAllByText('3/5')).toHaveLength(2); // MongoDB, Docker
   });
 
@@ -64,30 +64,30 @@ describe('Skills Component', () => {
     render(<Skills />);
     
     // Get all category sections
-    const frontendSection = screen.getByText('Frontend Development').closest('.skill-category');
+    const languagesSection = screen.getByText('Programming Languages').closest('.skill-category');
     const backendSection = screen.getByText('Backend Development').closest('.skill-category');
     const toolsSection = screen.getByText('Tools & Technologies').closest('.skill-category');
     const otherSection = screen.getByText('Other Skills').closest('.skill-category');
     
-    // Check frontend skills are in frontend section
-    expect(frontendSection).toHaveTextContent('React');
-    expect(frontendSection).toHaveTextContent('TypeScript');
-    expect(frontendSection).not.toHaveTextContent('Node.js');
+    // Check languages skills are in languages section
+    expect(languagesSection).toHaveTextContent('Java');
+    expect(languagesSection).toHaveTextContent('Python');
+    expect(languagesSection).not.toHaveTextContent('Node.js');
     
     // Check backend skills are in backend section
     expect(backendSection).toHaveTextContent('Node.js');
     expect(backendSection).toHaveTextContent('MongoDB');
-    expect(backendSection).not.toHaveTextContent('React');
+    expect(backendSection).not.toHaveTextContent('Java');
     
     // Check tools skills are in tools section
     expect(toolsSection).toHaveTextContent('Git');
     expect(toolsSection).toHaveTextContent('Docker');
-    expect(toolsSection).not.toHaveTextContent('React');
+    expect(toolsSection).not.toHaveTextContent('Java');
     
     // Check other skills are in other section
     expect(otherSection).toHaveTextContent('Agile/Scrum');
     expect(otherSection).toHaveTextContent('REST APIs');
-    expect(otherSection).not.toHaveTextContent('React');
+    expect(otherSection).not.toHaveTextContent('Java');
   });
 
   it('renders skill progress bars with correct width styles', () => {
@@ -97,16 +97,16 @@ describe('Skills Component', () => {
     expect(progressBars).toHaveLength(8); // 8 skills in mock data
     
     // Check that progress bars have the correct CSS custom property
-    const reactProgressBar = progressBars[0]; // React with proficiency 5
-    const computedStyle = window.getComputedStyle(reactProgressBar);
-    expect(reactProgressBar).toHaveStyle('--skill-width: 100%');
+    const javaProgressBar = progressBars[0]; // Java with proficiency 5
+    const computedStyle = window.getComputedStyle(javaProgressBar);
+    expect(javaProgressBar).toHaveStyle('--skill-width: 100%');
     
-    // Find TypeScript progress bar (proficiency 4)
-    const typescriptProgressBar = Array.from(progressBars).find((bar, index) => {
+    // Find Python progress bar (proficiency 4)
+    const pythonProgressBar = Array.from(progressBars).find((bar, index) => {
       const skillItem = bar.closest('.skill-item');
-      return skillItem?.textContent?.includes('TypeScript');
+      return skillItem?.textContent?.includes('Python');
     });
-    expect(typescriptProgressBar).toHaveStyle('--skill-width: 80%');
+    expect(pythonProgressBar).toHaveStyle('--skill-width: 80%');
   });
 
   it('has proper accessibility attributes', () => {
@@ -122,7 +122,7 @@ describe('Skills Component', () => {
     
     const categoryHeadings = screen.getAllByRole('heading', { level: 3 });
     expect(categoryHeadings).toHaveLength(4);
-    expect(categoryHeadings[0]).toHaveTextContent('Frontend Development');
+    expect(categoryHeadings[0]).toHaveTextContent('Programming Languages');
   });
 
   it('applies correct CSS classes for styling and animations', () => {
@@ -149,20 +149,20 @@ describe('Skills Component', () => {
   it('handles empty categories gracefully', () => {
     // Mock skills with missing category
     vi.mocked(skills).splice(0, skills.length, 
-      { name: 'React', category: 'frontend', proficiency: 5 }
+      { name: 'Java', category: 'languages', proficiency: 5 }
     );
     
     render(<Skills />);
     
     // Should still render all category sections
-    expect(screen.getByText('Frontend Development')).toBeInTheDocument();
+    expect(screen.getByText('Programming Languages')).toBeInTheDocument();
     expect(screen.getByText('Backend Development')).toBeInTheDocument();
     expect(screen.getByText('Tools & Technologies')).toBeInTheDocument();
     expect(screen.getByText('Other Skills')).toBeInTheDocument();
     
-    // Frontend should have the skill, others should be empty
-    const frontendSection = screen.getByText('Frontend Development').closest('.skill-category');
-    expect(frontendSection).toHaveTextContent('React');
+    // Languages should have the skill, others should be empty
+    const languagesSection = screen.getByText('Programming Languages').closest('.skill-category');
+    expect(languagesSection).toHaveTextContent('Java');
     
     const backendSection = screen.getByText('Backend Development').closest('.skill-category');
     expect(backendSection?.querySelectorAll('.skill-item')).toHaveLength(0);

@@ -12,7 +12,7 @@ export interface Project {
 
 export interface Skill {
   name: string;
-  category: 'frontend' | 'backend' | 'tools' | 'other';
+  category: 'languages' | 'backend' | 'tools' | 'other';
   proficiency: 1 | 2 | 3 | 4 | 5;
   icon?: string;
 }

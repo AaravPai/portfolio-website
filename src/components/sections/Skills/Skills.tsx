@@ -4,7 +4,7 @@ import type { Skill } from '../../../types';
 import './Skills.css';
 
 interface SkillsByCategory {
-  frontend: Skill[];
+  languages: Skill[];
   backend: Skill[];
   tools: Skill[];
   other: Skill[];
@@ -16,14 +16,14 @@ const Skills: React.FC = () => {
     acc[skill.category].push(skill);
     return acc;
   }, {
-    frontend: [],
+    languages: [],
     backend: [],
     tools: [],
     other: []
   });
 
   const categoryTitles = {
-    frontend: 'Frontend Development',
+    languages: 'Programming Languages',
     backend: 'Backend Development', 
     tools: 'Tools & Technologies',
     other: 'Other Skills'

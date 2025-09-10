@@ -12,8 +12,8 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const animatedTexts = useMemo(() => [
-    'Full Stack Developer',
-    'React Specialist',
+    'Software Developer',
+    'Passionate Student',
     'Problem Solver',
     'Tech Enthusiast'
   ], []);
@@ -47,10 +47,16 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
   }, []);
 
   const handleResumeDownload = useCallback(() => {
-    // This would typically download a PDF resume
-    // For now, we'll just scroll to the resume section
-    handleScrollToSection('resume');
-  }, [handleScrollToSection]);
+    // Download the resume PDF with dynamic filename
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    // Create filename from actual name (remove spaces, add underscore)
+    const fileName = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, []);
 
   return (
     <section 
@@ -79,9 +85,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
             </div>
 
             <p className="hero__description">
-              Passionate about creating exceptional digital experiences through 
-              clean code, innovative solutions, and user-centered design. 
-              I specialize in modern web technologies and love turning ideas into reality.
+              Driven Purdue Computer Science student with hands-on experience at Amazon and in research labs. Skilled in software engineering, cloud computing, and data science, with a strong focus on creating impactful, real-world solutions.
             </p>
 
             <div className="hero__actions">
