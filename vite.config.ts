@@ -6,7 +6,11 @@ export default defineConfig(({ command, mode }) => {
   // Load env file based on `mode` in the current working directory.
   const env = loadEnv(mode, process.cwd(), '')
   
+  // Set base path for GitHub Pages
+  const base = env.VITE_BASE_PATH || (mode === 'production' ? '/portfolio-website/' : '/')
+  
   return {
+    base,
     plugins: [react()],
     
     // Define global constants
