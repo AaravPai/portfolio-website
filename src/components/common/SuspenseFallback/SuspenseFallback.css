@@ -1,0 +1,59 @@
+.suspense-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--bg-primary, #ffffff);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.suspense-fallback-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.suspense-fallback-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-color, #dee2e6);
+  border-top: 3px solid var(--accent-primary, #007bff);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.suspense-fallback-message {
+  color: var(--text-secondary, #6c757d);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] .suspense-fallback {
+  background-color: var(--bg-primary, #1a1a1a);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .suspense-fallback-content {
+    padding: 1.5rem;
+  }
+  
+  .suspense-fallback-spinner {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+  }
+  
+  .suspense-fallback-message {
+    font-size: 0.8125rem;
+  }
+}

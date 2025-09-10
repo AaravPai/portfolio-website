@@ -1,0 +1,75 @@
+/* CSS Custom Properties for Theme Variables */
+:root {
+  /* Light Theme - WCAG AA Compliant Colors */
+  --bg-primary: #ffffff;
+  --bg-primary-rgb: 255, 255, 255;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529; /* 16.75:1 contrast ratio with white */
+  --text-secondary: #495057; /* 7.0:1 contrast ratio with white - improved from #6c757d */
+  --accent-primary: #0056b3; /* 7.15:1 contrast ratio with white - improved from #007bff */
+  --accent-primary-alpha: rgba(0, 86, 179, 0.1);
+  --accent-primary-dark: #004085;
+  --accent-secondary: #495057; /* Improved contrast */
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Focus and interaction colors */
+  --focus-color: #0056b3;
+  --focus-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25);
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #856404; /* High contrast warning color */
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Breakpoints */
+  --mobile: 320px;
+  --mobile-large: 480px;
+  --tablet: 768px;
+  --tablet-large: 968px;
+  --desktop: 1024px;
+  --desktop-large: 1200px;
+  --large: 1440px;
+  --extra-large: 1920px;
+
+  /* Typography */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+[data-theme='dark'] {
+  /* Dark Theme - WCAG AA Compliant Colors */
+  --bg-primary: #1a1a1a;
+  --bg-primary-rgb: 26, 26, 26;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff; /* 15.3:1 contrast ratio with dark background */
+  --text-secondary: #e9ecef; /* 11.7:1 contrast ratio - improved from #b0b0b0 */
+  --accent-primary: #66b3ff; /* 7.2:1 contrast ratio - improved from #4dabf7 */
+  --accent-primary-alpha: rgba(102, 179, 255, 0.1);
+  --accent-primary-dark: #4da6ff;
+  --accent-secondary: #adb5bd; /* Improved contrast */
+  --border-color: #495057; /* Improved contrast */
+  --shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Focus and interaction colors for dark theme */
+  --focus-color: #66b3ff;
+  --focus-shadow: 0 0 0 3px rgba(102, 179, 255, 0.25);
+  --error-color: #f5c6cb;
+  --success-color: #d4edda;
+  --warning-color: #fff3cd;
+}

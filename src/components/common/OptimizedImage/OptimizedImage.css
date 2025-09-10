@@ -1,0 +1,38 @@
+.optimized-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.optimized-image-element {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Ensure proper aspect ratio maintenance */
+.optimized-image.aspect-square .optimized-image-element {
+  aspect-ratio: 1 / 1;
+}
+
+.optimized-image.aspect-video .optimized-image-element {
+  aspect-ratio: 16 / 9;
+}
+
+.optimized-image.aspect-portrait .optimized-image-element {
+  aspect-ratio: 3 / 4;
+}
+
+/* Performance optimizations */
+.optimized-image-element {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .optimized-image-element {
+    image-rendering: auto;
+  }
+}

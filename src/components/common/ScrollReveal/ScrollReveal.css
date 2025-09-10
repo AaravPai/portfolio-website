@@ -1,0 +1,16 @@
+.scroll-reveal {
+  will-change: transform, opacity;
+}
+
+.scroll-reveal--visible {
+  /* Additional styles can be added here if needed */
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

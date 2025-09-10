@@ -1,0 +1,450 @@
+.project-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.project-modal {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid var(--border-color);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.project-modal__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-modal__touch-hint {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.project-modal__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.project-modal__close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-modal__close:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.project-modal__close:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.project-modal__content {
+  padding: 2rem;
+}
+
+.project-modal__image-container {
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.project-modal__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.project-modal__details {
+  display: grid;
+  gap: 2rem;
+}
+
+.project-modal__description h3,
+.project-modal__technologies h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.project-modal__description p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.project-modal__tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.project-modal__tech-tag {
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.project-modal__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-modal__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  flex: 1;
+  justify-content: center;
+  min-width: 160px;
+}
+
+.project-modal__link--live {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.project-modal__link--live:hover {
+  background: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.project-modal__link--github {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.project-modal__link--github:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.project-modal__link:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.project-modal__link-icon {
+  font-size: 1.1rem;
+}
+
+/* Navigation Controls */
+.project-modal__navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-modal__nav-btn {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+.project-modal__nav-btn:hover {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.project-modal__nav-btn:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.project-modal__nav-btn--prev {
+  margin-right: auto;
+}
+
+.project-modal__nav-btn--next {
+  margin-left: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .project-modal {
+    max-width: 95vw;
+  }
+  
+  .project-modal__navigation {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .project-modal__nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .project-modal__nav-btn--prev,
+  .project-modal__nav-btn--next {
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-modal-backdrop {
+    padding: 0.5rem;
+  }
+  
+  .project-modal {
+    max-height: 95vh;
+    max-width: 100%;
+  }
+  
+  .project-modal__header {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .project-modal__controls {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .project-modal__touch-hint {
+    font-size: 0.75rem;
+    text-align: right;
+  }
+  
+  .project-modal__title {
+    font-size: 1.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .project-modal__content {
+    padding: 1.5rem;
+  }
+  
+  .project-modal__details {
+    gap: 1.5rem;
+  }
+  
+  .project-modal__actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .project-modal__link {
+    min-width: unset;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .project-modal__close {
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-modal-backdrop {
+    padding: 0.25rem;
+  }
+  
+  .project-modal__header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .project-modal__title {
+    font-size: 1.25rem;
+  }
+  
+  .project-modal__content {
+    padding: 1rem;
+  }
+  
+  .project-modal__close {
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+  
+  .project-modal__tech-list {
+    gap: 0.5rem;
+  }
+  
+  .project-modal__tech-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .project-modal__touch-hint {
+    display: none; /* Hide on very small screens to save space */
+  }
+  
+  .project-modal__link {
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .project-modal__image-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-modal__image {
+    max-height: 250px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .project-modal__close:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transform: none;
+  }
+  
+  .project-modal__link:hover {
+    transform: none;
+  }
+  
+  .project-modal__nav-btn:hover {
+    transform: none;
+  }
+  
+  /* Larger touch targets */
+  .project-modal__close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .project-modal__link {
+    min-height: 44px;
+    padding: 1rem 1.5rem;
+  }
+  
+  .project-modal__nav-btn {
+    min-height: 48px;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .project-modal {
+    border: 2px solid var(--text-primary);
+  }
+  
+  .project-modal__close:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .project-modal-backdrop,
+  .project-modal {
+    animation: none;
+  }
+  
+  .project-modal__close:hover {
+    transform: none;
+  }
+  
+  .project-modal__link:hover {
+    transform: none;
+  }
+}
