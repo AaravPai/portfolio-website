@@ -14,7 +14,8 @@ export const ResumeDownload: React.FC = () => {
       
       // Create a link element and trigger download
       const link = document.createElement('a');
-      link.href = '/resume.pdf'; // This should point to your actual resume PDF
+      // Use the correct base URL for GitHub Pages
+      link.href = `${import.meta.env.BASE_URL}resume.pdf`;
       // Create filename from actual name (remove spaces, add underscore)
       const fileName = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
       link.download = fileName;

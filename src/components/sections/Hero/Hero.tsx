@@ -49,7 +49,8 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
   const handleResumeDownload = useCallback(() => {
     // Download the resume PDF with dynamic filename
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
+    // Use the correct base URL for GitHub Pages
+    link.href = `${import.meta.env.BASE_URL}resume.pdf`;
     // Create filename from actual name (remove spaces, add underscore)
     const fileName = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
     link.download = fileName;
